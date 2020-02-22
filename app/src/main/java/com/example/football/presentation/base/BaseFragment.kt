@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.football.FootballApplication
 import com.example.football.R
+import com.example.football.di.presentation.FragmentSubComponent
 import com.example.football.utils.extensions.getAppColor
 import java.lang.UnsupportedOperationException
 
@@ -15,6 +17,10 @@ import java.lang.UnsupportedOperationException
  */
 abstract class BaseFragment : Fragment() {
 
+
+  private val fragmentSubComponent: FragmentSubComponent by lazy {
+    FootballApplication.get(activity!!).appComponent.getFragmentSubComponent().bindsFragmentContext(this).build()
+  }
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
