@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/tabMatches"
+    android:icon="@drawable/ic_tab_matches"
+    android:title="@string/matches" />
+  <item
+    android:id="@+id/tabVideos"
+    android:icon="@drawable/ic_tab_videos"
+    android:title="@string/videos" />
+</menu>

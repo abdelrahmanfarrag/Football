@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/app_navigation"
+  app:startDestination="@id/tabMatches">
+
+  <fragment
+    android:id="@+id/tabMatches"
+    android:name="com.example.football.MatchesFragment"
+    tools:layout="@layout/fragment_matches" />
+  <fragment
+    android:id="@+id/tabVideos"
+    android:name="com.example.football.VideosFragment"
+    tools:layout="@layout/fragment_videos" />
+</navigation>
