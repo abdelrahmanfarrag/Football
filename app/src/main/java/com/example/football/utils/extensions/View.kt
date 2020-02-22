@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation.INFINITE
-import android.view.animation.Animation.REVERSE
 import android.view.animation.AnimationSet
 import android.view.animation.DecelerateInterpolator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 /**
@@ -47,5 +48,19 @@ fun View.fadeAnimation() {
   animation.addAnimation(fadeIn)
   animation.addAnimation(fadeOut)
   this.animation = animation
+}
 
+fun RecyclerView.endlessScrolling(layoutManager: LinearLayoutManager, loadMore: () -> Unit){
+  this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+      if (dy > 0) {
+        val visibleItemCount = layoutManager.childCount
+        val totalItemsCount = layoutManager.itemCount
+        val pastVisibleItems = layoutManager.findFirstVisibleItemPosition()
+        if (visibleItemCount + pastVisibleItems >= totalItemsCount) {
+          loadMore()
+        }
+      }
+    }
+  })
 }

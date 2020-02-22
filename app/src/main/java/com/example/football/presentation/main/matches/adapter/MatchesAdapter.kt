@@ -17,7 +17,6 @@ class MatchesAdapter @Inject constructor() : RecyclerAdapter<Match, MatchesViewH
   override fun getLayoutId(viewType: Int) = R.layout.item_live_score
 
   override fun setData(newItems: List<Match>) {
-    Log.d("itemsInserted","$adapterItems")
     adapterItems.addAll(newItems)
 
   }
