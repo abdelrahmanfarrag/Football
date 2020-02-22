@@ -18,49 +18,49 @@ data class LiveScoresResponse(
   ) {
     data class Match(
       @SerializedName("added")
-      val added: String,
+      val added: String? = null,
       @SerializedName("away_id")
-      val awayId: Int,
+      val awayId: Int? = null,
       @SerializedName("away_name")
-      val awayName: String,
+      val awayName: String? = null,
       @SerializedName("competition_id")
-      val competitionId: Int,
+      val competitionId: Int? = null,
       @SerializedName("competition_name")
-      val competitionName: String,
+      val competitionName: String? = null,
       @SerializedName("et_score")
-      val etScore: String,
+      val etScore: String? = null,
       @SerializedName("events")
-      val events: Boolean,
+      val events: Boolean? = null,
       @SerializedName("fixture_id")
-      val fixtureId: Int,
+      val fixtureId: Int? = null,
       @SerializedName("ft_score")
-      val ftScore: String,
+      val ftScore: String? = null,
       @SerializedName("home_id")
-      val homeId: Int,
+      val homeId: Int? = null,
       @SerializedName("home_name")
-      val homeName: String,
+      val homeName: String? = null,
       @SerializedName("ht_score")
-      val htScore: String,
+      val htScore: String? = null,
       @SerializedName("id")
-      val id: Int,
+      val id: Int? = null,
       @SerializedName("last_changed")
-      val lastChanged: String,
+      val lastChanged: String? = null,
       @SerializedName("league_id")
-      val leagueId: Int,
+      val leagueId: Int? = null,
       @SerializedName("league_name")
-      val leagueName: String,
+      val leagueName: String? = null,
       @SerializedName("location")
-      val location: String,
+      val location: String? = null,
       @SerializedName("outcomes")
-      val outcomes: Outcomes,
+      val outcomes: Outcomes? = null,
       @SerializedName("scheduled")
-      val scheduled: String,
+      val scheduled: String? = null,
       @SerializedName("score")
-      val score: String,
+      val score: String? = null,
       @SerializedName("status")
-      val status: String,
+      val status: String? = null,
       @SerializedName("time")
-      val time: String
+      val time: String? = null
     ) {
       data class Outcomes(
         @SerializedName("extra_time")
@@ -76,21 +76,22 @@ data class LiveScoresResponse(
 
 fun LiveScoresResponse.mapToLiveScores() = LiveScores(success, Data(data.match.map {
   Match(
-    it.awayName,
-    it.awayId,
-    it.competitionName,
-    it.competitionId,
-    it.etScore,
-    it.ftScore,
-    it.homeName,
-    it.homeId,
-    it.htScore,
-    it.lastChanged,
-    it.leagueName,
-    it.location,
-    it.score,
-    it.status,
-    it.time
+    it.awayName ?: "",
+    it.awayId ?: 0,
+    it.competitionName ?: "",
+    it.competitionId ?: 0,
+    it.etScore ?: "",
+    it.ftScore ?: "",
+    it.homeName ?: "",
+    it.homeId ?: 0,
+    it.htScore ?: "",
+    it.lastChanged ?: "",
+    it.leagueName ?: "",
+    it.location ?: "",
+    it.score ?: "",
+    it.status ?: "",
+    it.time ?: "",
+    it.added ?: ""
   )
 
 }))

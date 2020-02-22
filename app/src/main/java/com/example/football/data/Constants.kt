@@ -10,6 +10,7 @@ object Constants {
   const val SECRET_KEY = "kTM8yvsnBx3O1MW0i0VUF83pWK0VnSlH"
   const val KEY = "key"
   const val API_KEY = "Yw4UCFd8JNGBZDSq"
+  const val IN_PLAY = "IN PLAY"
 
   object Urls {
     const val LIVE_SCORES_BASE_URL = "https://livescore-api.com/api-client/scores/"

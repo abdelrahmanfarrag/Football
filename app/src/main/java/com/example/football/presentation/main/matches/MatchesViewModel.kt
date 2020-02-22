@@ -1,5 +1,6 @@
 package com.example.football.presentation.main.matches
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,9 +46,11 @@ class MatchesViewModel @Inject constructor(private val matchesRepository: Matche
         if (throwable.message == NetworkInterceptor.NETWORK_ISSUE) {
           _liveScores.setError(Error.NETWORK)
         } else {
+          Log.d("errorHappens",throwable.toString())
           _liveScores.setError(Error.GENERAL)
         }
       })
+
       .addTo(compositeDisposable)
 
 

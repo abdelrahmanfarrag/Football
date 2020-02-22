@@ -32,7 +32,10 @@ abstract class RecyclerAdapter<T, H : BaseViewHolder<T>> : RecyclerView.Adapter<
 
   protected abstract fun instantiateViewHolder(itemView: View, viewType: Int): H
 
+  abstract fun setData(newItems: List<T>)
+
+
   abstract class BaseViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    protected abstract fun bind(t: T)
+     abstract fun bind(item: T)
   }
 }

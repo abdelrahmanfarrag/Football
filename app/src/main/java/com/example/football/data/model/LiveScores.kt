@@ -11,7 +11,6 @@ data class LiveScores(
   data class Data(
     val matches: List<Match>
   )
-
   data class Match(
     val awayName: String,
     val awayId: Int,
@@ -27,7 +26,8 @@ data class LiveScores(
     val location: String,
     val score: String,
     val status: String,
-    val time: String
+    val time: String,
+    val added:String
 
   )
 }

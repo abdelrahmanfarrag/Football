@@ -3,4 +3,5 @@
   <string name="matches">Matches</string>
   <string name="videos">Videos</string>
   <string name="loading">LOADING</string>
+  <string name="live">LIVE</string>
 </resources>

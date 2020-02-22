@@ -5,6 +5,7 @@ import com.example.football.data.Constants.Urls.SCORE_BAT_BASE_URL
 import com.example.football.di.application.qualifier.LiveScores
 import com.example.football.di.application.qualifier.ScoreBat
 import com.example.football.di.application.scope.ApplicationScope
+import com.example.football.di.application.scope.NullOnEmptyConverterFactory
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -32,6 +33,7 @@ class NetworkModule {
   ): Retrofit = Retrofit.Builder()
     .baseUrl(LIVE_SCORES_BASE_URL)
     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+    .addConverterFactory(NullOnEmptyConverterFactory())
     .addConverterFactory(GsonConverterFactory.create(gson))
     .client(client)
     .build()
@@ -44,6 +46,7 @@ class NetworkModule {
   ): Retrofit = Retrofit.Builder()
     .baseUrl(SCORE_BAT_BASE_URL)
     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+    .addConverterFactory(NullOnEmptyConverterFactory())
     .addConverterFactory(GsonConverterFactory.create(gson))
     .client(client)
     .build()
