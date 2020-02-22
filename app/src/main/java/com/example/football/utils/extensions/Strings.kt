@@ -5,5 +5,5 @@ package com.example.football.utils.extensions
  * Contact: abdelrahmanfarrag291@gmail.com
  */
 
-fun String.split()=
-  this.split(":")
+fun String.splitWord(char:String)=
+  this.split(char)

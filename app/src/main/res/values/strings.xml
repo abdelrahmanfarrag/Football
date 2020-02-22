@@ -7,4 +7,15 @@
   <string name="network_error">Please check your network connection and try again</string>
   <string name="error_occurred">Something went wrong , try again later !</string>
   <string name="statistics">Statistics</string>
+  <string name="attacks">ATTACKS</string>
+  <string name="attempts">ATTEMPTS ON GOAL</string>
+  <string name="corners">CORNERS</string>
+  <string name="fouls">FOULS</string>
+  <string name="offsides">OFFSIDES</string>
+  <string name="possession">POSSESSION</string>
+  <string name="yellow_cards">YELLOW CARDS</string>
+  <string name="red_cards">RED CARDS</string>
+  <string name="shots_on_target">SHOTS ON TARGET</string>
+  <string name="shots_off_target">SHOTS OFF TARGET</string>
+  <string name="free_kicks">FREE KICKS</string>
 </resources>

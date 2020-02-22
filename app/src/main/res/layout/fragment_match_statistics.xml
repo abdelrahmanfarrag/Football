@@ -1,10 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:fillViewport="true">
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" />
+    >
+
+    <TextView
+      android:id="@+id/matchStatisticsMatchLeague"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_black"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:textColor="@color/black"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/matchStatisticsMatchState"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xsmall"
+      android:textSize="@dimen/text_size_micro"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:textColor="@color/gray"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/matchStatisticsMatchLeague" />
+
+    <TextView
+      android:id="@+id/matchStatisticsHomeName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+      android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_black"
+      android:textSize="@dimen/text_size_medium"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/matchStatisticsMatchState" />
+
+    <TextView
+      android:id="@+id/matchStatisticsHomeScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_black"
+      android:textSize="@dimen/text_size_large"
+      app:layout_constraintBottom_toBottomOf="@id/matchStatisticsHomeName"
+      app:layout_constraintEnd_toStartOf="@+id/matchStatisticsHomeName"
+      app:layout_constraintTop_toTopOf="@+id/matchStatisticsHomeName" />
+
+    <TextView
+      android:id="@+id/matchStatisticsAwayName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+      android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_black"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_medium"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/matchStatisticsMatchState" />
+
+    <TextView
+      android:id="@+id/matchStatisticsAwayScore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_black"
+      android:textSize="@dimen/text_size_large"
+      app:layout_constraintBottom_toBottomOf="@id/matchStatisticsHomeName"
+      app:layout_constraintStart_toEndOf="@+id/matchStatisticsAwayName"
+      app:layout_constraintTop_toTopOf="@+id/matchStatisticsHomeName" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/statisticsList"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:orientation="vertical"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintEnd_toEndOf="@id/matchStatisticsHomeName"
+      app:layout_constraintStart_toStartOf="@id/matchStatisticsAwayName"
+      app:layout_constraintTop_toBottomOf="@+id/matchStatisticsAwayScore"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginBottom="@dimen/margin_padding_size_xsmall"/>
+
+
+    <include
+      android:id="@+id/statisticsLoadingFrame"
+      layout="@layout/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

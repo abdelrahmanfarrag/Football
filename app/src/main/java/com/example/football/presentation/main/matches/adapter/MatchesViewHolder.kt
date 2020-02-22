@@ -9,7 +9,6 @@ import com.example.football.data.model.LiveScores.Match
 import com.example.football.presentation.base.RecyclerAdapter.BaseViewHolder
 import com.example.football.utils.extensions.fadeAnimation
 import com.example.football.utils.extensions.gone
-import com.example.football.utils.extensions.split
 import com.example.football.utils.extensions.visible
 import kotlinx.android.synthetic.main.item_live_score.view.awayTeamText
 import kotlinx.android.synthetic.main.item_live_score.view.competitionLocationText
