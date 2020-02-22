@@ -3,6 +3,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.example.football">
 
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application
     android:allowBackup="false"
     android:icon="@mipmap/ic_launcher"
@@ -12,7 +13,7 @@
     android:theme="@style/AppTheme"
     tools:ignore="GoogleAppIndexingWarning">
     <activity
-      android:name=".MainActivity"
+      android:name=".presentation.main.MainActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>

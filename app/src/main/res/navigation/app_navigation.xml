@@ -7,10 +7,10 @@
 
   <fragment
     android:id="@+id/tabMatches"
-    android:name="com.example.football.MatchesFragment"
+    android:name="com.example.football.presentation.main.matches.MatchesFragment"
     tools:layout="@layout/fragment_matches" />
   <fragment
     android:id="@+id/tabVideos"
-    android:name="com.example.football.VideosFragment"
+    android:name="com.example.football.presentation.main.videos.VideosFragment"
     tools:layout="@layout/fragment_videos" />
 </navigation>

@@ -5,6 +5,8 @@
   <color name="colorAccent">@color/olive</color>
 
   <color name="white">#FFFFFF</color>
+  <color name="transparent_white">#c8ffffff</color>
+
   <color name="yellow">#FFFF00</color>
   <color name="fuchsia">#FF00FF</color>
   <color name="red">#FF0000</color>

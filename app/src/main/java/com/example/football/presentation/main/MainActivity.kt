@@ -1,8 +1,7 @@
-package com.example.football
+package com.example.football.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,6 +9,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.football.R.id
+import com.example.football.R.layout
 import kotlinx.android.synthetic.main.activity_main.mainBottomNavigation
 import kotlinx.android.synthetic.main.activity_main.mainToolbar
 import kotlinx.android.synthetic.main.activity_main.toolbarTitleTextView
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(layout.activity_main)
   }
 
   override fun onResume() {

@@ -30,4 +30,7 @@
   <dimen name="text_size_xxlarge">45sp</dimen>
   <dimen name="text_size_xxxlarge">56sp</dimen>
 
+  <dimen name="progress_wheel_width">48dp</dimen>
+  <dimen name="progress_wheel_height">48dp</dimen>
+
 </resources>
