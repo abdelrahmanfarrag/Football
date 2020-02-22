@@ -91,7 +91,8 @@ fun LiveScoresResponse.mapToLiveScores() = LiveScores(success, Data(data.match.m
     it.score ?: "",
     it.status ?: "",
     it.time ?: "",
-    it.added ?: ""
+    it.added ?: "",
+    it.id ?:0
   )
 
 }))

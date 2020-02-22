@@ -1,10 +1,10 @@
-package com.example.football.presentation.main.matches
+package com.example.football.presentation.main.matches.statistics
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.football.data.model.LiveScores
+import com.example.football.data.model.MatchStatistics
 import com.example.football.data.remote.NetworkInterceptor
 import com.example.football.presentation.common.ResourceState.SUCCESS
 import com.example.football.presentation.common.ResponseResource
@@ -22,32 +22,34 @@ import javax.inject.Inject
  * Authored by Abdelrahman Ahmed on 22 Feb, 2020.
  * Contact: abdelrahmanfarrag291@gmail.com
  */
-class MatchesViewModel @Inject constructor(private val matchesRepository: MatchesRepository) :
+class MatchStatisticsViewModel @Inject constructor(private val matchStatisticsRepository: MatchStatisticsRepository) :
   ViewModel() {
 
   private val compositeDisposable = CompositeDisposable()
-  private val _liveScores = MutableLiveData<ResponseResource<LiveScores>>()
+  private val _statistics = MutableLiveData<ResponseResource<MatchStatistics>>()
 
-  val liveScores: LiveData<ResponseResource<LiveScores>>
-    get() = _liveScores
+  val statistics: LiveData<ResponseResource<MatchStatistics>>
+    get() = _statistics
 
-  fun loadLiveScores() {
-    matchesRepository.getLiveMapScore()
-      .doOnSubscribe { _liveScores.setLoading() }
+  var id =0
+
+  fun loadMatchStatistics() {
+    matchStatisticsRepository.loadMatchStatistics(id)
+      .doOnSubscribe { _statistics.setLoading() }
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe({ liveScoresResource ->
         if (liveScoresResource.responseState == SUCCESS) {
-          _liveScores.setSuccess(liveScoresResource.responseData!!)
+          _statistics.setSuccess(liveScoresResource.responseData!!)
         } else {
-          _liveScores.setError(liveScoresResource.message)
+          _statistics.setError(liveScoresResource.message)
         }
       }, { throwable ->
         if (throwable.message == NetworkInterceptor.NETWORK_ISSUE) {
-          _liveScores.setError(Error.NETWORK)
+          _statistics.setError(Error.NETWORK)
         } else {
           Log.d("errorHappens",throwable.toString())
-          _liveScores.setError(Error.GENERAL)
+          _statistics.setError(Error.GENERAL)
         }
       })
       .addTo(compositeDisposable)

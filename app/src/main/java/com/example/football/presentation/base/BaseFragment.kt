@@ -19,8 +19,10 @@ abstract class BaseFragment : Fragment() {
 
 
   private val fragmentSubComponent: FragmentSubComponent by lazy {
-    FootballApplication.get(activity!!).appComponent.getFragmentSubComponent().bindsFragmentContext(this).build()
+    FootballApplication.get(activity!!).appComponent.getFragmentSubComponent()
+      .bindsFragmentContext(this).build()
   }
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -35,16 +37,15 @@ abstract class BaseFragment : Fragment() {
     } ?: throw UnsupportedOperationException("You must call @Layout(res) annotation above fragment")
   }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
     setupInjection(fragmentSubComponent)
-    super.onViewCreated(view, savedInstanceState)
-    afterFragmentInstantiate(view, savedInstanceState)
-
+    super.onActivityCreated(savedInstanceState)
+    afterFragmentInstantiate(savedInstanceState)
   }
 
   private fun getLayoutResource(): Int? = javaClass.getAnnotation(Layout::class.java)?.value
 
-  protected abstract fun afterFragmentInstantiate(view: View, savedInstanceState: Bundle?)
+  protected abstract fun afterFragmentInstantiate(savedInstanceState: Bundle?)
   protected open fun setupInjection(component: FragmentSubComponent) {}
 
 }

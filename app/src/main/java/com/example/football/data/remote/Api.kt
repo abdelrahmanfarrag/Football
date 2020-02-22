@@ -1,7 +1,9 @@
 package com.example.football.data.remote
 
 import com.example.football.data.Constants.Urls.LIVE_SCORE
+import com.example.football.data.Constants.Urls.STATISTICS
 import com.example.football.data.remote.response.LiveScoresResponse
+import com.example.football.data.remote.response.MatchStatisticsResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
@@ -22,4 +24,10 @@ interface LiveScoreApi {
   fun loadLiveScores(
     @QueryMap queryMap: Map<String, String>
   ): Single<Response<LiveScoresResponse>>
+
+  @GET(STATISTICS)
+  fun loadMatchStatistics(
+    @QueryMap queryMap: Map<String, String>
+  ): Single<Response<MatchStatisticsResponse>>
+
 }

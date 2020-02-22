@@ -3,6 +3,7 @@ package com.example.football.di.presentation
 import com.example.football.di.presentation.scope.PerFragment
 import com.example.football.presentation.base.BaseFragment
 import com.example.football.presentation.main.matches.MatchesFragment
+import com.example.football.presentation.main.matches.statistics.MatchStatisticsFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 
@@ -15,6 +16,9 @@ import dagger.Subcomponent
 interface FragmentSubComponent {
 
   fun inject(matchesFragment: MatchesFragment)
+
+  fun inject(statisticsFragment: MatchStatisticsFragment)
+
   @Subcomponent.Builder
   interface Builder {
 

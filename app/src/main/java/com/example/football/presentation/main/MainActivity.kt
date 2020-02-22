@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.football.R.id
 import com.example.football.R.layout
+import com.example.football.utils.extensions.gone
+import com.example.football.utils.extensions.visible
 import kotlinx.android.synthetic.main.activity_main.mainBottomNavigation
 import kotlinx.android.synthetic.main.activity_main.mainToolbar
 import kotlinx.android.synthetic.main.activity_main.toolbarTitleTextView
@@ -42,7 +44,19 @@ class MainActivity : AppCompatActivity() {
     NavigationUI.setupActionBarWithNavController(this, navController)
   }
 
+  override fun onSupportNavigateUp(): Boolean {
+    return NavigationUI.navigateUp(navController, null)
+  }
+
   fun setupToolbarTitle(title: String) {
     toolbarTitleTextView.text = title
+  }
+
+  fun hideBottomNavigationView() {
+    mainBottomNavigation.gone()
+  }
+
+  fun showBottomNavigationView() {
+    mainBottomNavigation.visible()
   }
 }

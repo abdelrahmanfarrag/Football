@@ -3,6 +3,7 @@ package com.example.football.presentation.main.matches.adapter
 import android.util.Log
 import android.view.View
 import com.example.football.R
+import com.example.football.data.model.LiveScores
 import com.example.football.data.model.LiveScores.Match
 import com.example.football.presentation.base.RecyclerAdapter
 import javax.inject.Inject
@@ -13,7 +14,7 @@ import javax.inject.Inject
  */
 class MatchesAdapter @Inject constructor() : RecyclerAdapter<Match, MatchesViewHolder>() {
 
-  private lateinit var matchClick: (Int) -> Unit
+  private lateinit var matchClick: (Int, View, Match) -> Unit
   override fun getLayoutId(viewType: Int) = R.layout.item_live_score
 
   override fun setData(newItems: List<Match>) {
@@ -21,7 +22,7 @@ class MatchesAdapter @Inject constructor() : RecyclerAdapter<Match, MatchesViewH
 
   }
 
-  fun setMatchClickListener(matchClick: (Int) -> Unit) {
+  fun setMatchClickListener(matchClick: (Int, View, Match) -> Unit) {
     this.matchClick = matchClick
   }
 

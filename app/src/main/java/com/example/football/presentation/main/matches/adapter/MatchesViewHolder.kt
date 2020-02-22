@@ -1,12 +1,15 @@
 package com.example.football.presentation.main.matches.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.View
 import com.example.football.data.Constants.IN_PLAY
+import com.example.football.data.model.LiveScores
 import com.example.football.data.model.LiveScores.Match
 import com.example.football.presentation.base.RecyclerAdapter.BaseViewHolder
 import com.example.football.utils.extensions.fadeAnimation
 import com.example.football.utils.extensions.gone
+import com.example.football.utils.extensions.split
 import com.example.football.utils.extensions.visible
 import kotlinx.android.synthetic.main.item_live_score.view.awayTeamText
 import kotlinx.android.synthetic.main.item_live_score.view.competitionLocationText
@@ -21,7 +24,7 @@ import kotlinx.android.synthetic.main.item_live_score.view.timeTextView
  * Authored by Abdelrahman Ahmed on 22 Feb, 2020.
  * Contact: abdelrahmanfarrag291@gmail.com
  */
-class MatchesViewHolder(itemView: View, private val click: (Int) -> Unit) :
+class MatchesViewHolder(itemView: View, private val click: (Int, View, Match) -> Unit) :
   BaseViewHolder<Match>(itemView) {
 
   private val time = itemView.timeTextView
@@ -53,7 +56,7 @@ class MatchesViewHolder(itemView: View, private val click: (Int) -> Unit) :
     awayTeam.text = item.awayName
     status.text = item.status
     itemView.setOnClickListener {
-      click.invoke(item.competitionId)
+      click.invoke(item.id, itemView, item)
     }
   }
 }

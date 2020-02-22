@@ -3,9 +3,11 @@ package com.example.football.presentation.main.matches
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.football.R.layout
 import com.example.football.R.string
+import com.example.football.data.model.LiveScores.Match
 import com.example.football.di.presentation.FragmentSubComponent
 import com.example.football.di.presentation.viewmodel.ViewModelFactoryProvider
 import com.example.football.presentation.base.BaseFragment
@@ -41,7 +43,7 @@ class MatchesFragment : BaseFragment() {
     component.inject(this)
   }
 
-  override fun afterFragmentInstantiate(view: View, savedInstanceState: Bundle?) {
+  override fun afterFragmentInstantiate(savedInstanceState: Bundle?) {
     setFragmentTitle(getString(string.matches))
     layoutManager = LinearLayoutManager(this.activity)
     callLiveScoresService()
@@ -59,8 +61,8 @@ class MatchesFragment : BaseFragment() {
         ResourceState.SUCCESS -> {
           loadingFrame.gone()
           liveScores.responseData?.let { data ->
-            adapter.setMatchClickListener { id ->
-              toast("$id")
+            adapter.setMatchClickListener { id, itemView, match ->
+              toStatisticsFragment(id, match, itemView)
             }
             adapter.setData(data.data.matches)
             liveScoresMatchesList.layoutManager = layoutManager
@@ -80,5 +82,10 @@ class MatchesFragment : BaseFragment() {
         }
       }
     })
+  }
+
+  private fun toStatisticsFragment(id: Int, match: Match, view: View) {
+    val action = MatchesFragmentDirections.actionToMatchStatisticsFragment(id, match)
+    Navigation.findNavController(view).navigate(action)
   }
 }

@@ -6,4 +6,5 @@
   <string name="live">LIVE</string>
   <string name="network_error">Please check your network connection and try again</string>
   <string name="error_occurred">Something went wrong , try again later !</string>
+  <string name="statistics">Statistics</string>
 </resources>

@@ -5,6 +5,7 @@ import com.example.football.data.remote.Validator
 import com.example.football.di.presentation.scope.PerFragment
 import com.example.football.presentation.main.matches.MatchesRepository
 import com.example.football.presentation.main.matches.adapter.MatchesAdapter
+import com.example.football.presentation.main.matches.statistics.MatchStatisticsRepository
 import dagger.Module
 import dagger.Provides
 
@@ -24,4 +25,12 @@ class FragmentModule {
   @Provides
   @PerFragment
   fun provideMatchAdapter() = MatchesAdapter()
+
+  @Provides
+  @PerFragment
+  fun providesMatchStatisticsRepository(
+    liveScoreApi: LiveScoreApi,
+    validator: Validator
+  ) = MatchStatisticsRepository(liveScoreApi, validator)
+
 }
