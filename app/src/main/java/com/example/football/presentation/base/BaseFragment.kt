@@ -36,7 +36,7 @@ abstract class BaseFragment : Fragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    setupInjection()
+    setupInjection(fragmentSubComponent)
     super.onViewCreated(view, savedInstanceState)
     afterFragmentInstantiate(view, savedInstanceState)
 
@@ -45,6 +45,6 @@ abstract class BaseFragment : Fragment() {
   private fun getLayoutResource(): Int? = javaClass.getAnnotation(Layout::class.java)?.value
 
   protected abstract fun afterFragmentInstantiate(view: View, savedInstanceState: Bundle?)
-  protected open fun setupInjection() {}
+  protected open fun setupInjection(component: FragmentSubComponent) {}
 
 }

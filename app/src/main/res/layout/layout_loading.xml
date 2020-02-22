@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/loadingFrameContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
+  android:background="@color/transparent_white"
+  android:visibility="visible">
 
-  <FrameLayout
-    android:id="@+id/medicalInsuranceLoadingFrame"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:background="@color/transparent_white"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ProgressBar
       android:layout_width="@dimen/progress_wheel_width"
@@ -22,7 +19,28 @@
       android:layout_gravity="center"
       android:clickable="true"
       android:focusable="true"
-      android:padding="@dimen/margin_padding_size_xxsmall" />
-  </FrameLayout>
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:clickable="true"
+      android:focusable="true"
+      android:text="@string/loading"
+      android:textColor="@color/black"
+      android:fontFamily="@font/cairo_semi_bold"
+      app:layout_constraintVertical_bias=".55"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:padding="@dimen/margin_padding_size_xxsmall" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+

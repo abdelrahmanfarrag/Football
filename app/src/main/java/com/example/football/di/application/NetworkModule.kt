@@ -6,6 +6,7 @@ import com.example.football.di.application.qualifier.LiveScores
 import com.example.football.di.application.qualifier.ScoreBat
 import com.example.football.di.application.scope.ApplicationScope
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -19,6 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 @Module(includes = [OkHttpModule::class])
 class NetworkModule {
+
+  @Provides
+  @ApplicationScope fun providesGson(): Gson = GsonBuilder().setLenient().create()
 
   @Provides
   @LiveScores
