@@ -13,3 +13,6 @@ fun ImageView.load(url: String) {
     .load(url)
     .into(this)
 }
+fun ImageView.setDrawable(res:Int){
+  this.setImageResource(res)
+}

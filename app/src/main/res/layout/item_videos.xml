@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="@dimen/margin_padding_size_xsmall"
+  app:cardBackgroundColor="@color/white"
+  app:cardCornerRadius="16dp"
+  app:cardElevation="@dimen/margin_padding_size_xsmall">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+      android:id="@+id/videoCompetitionName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_large"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/videoCompetitionTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_medium"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionName" />
+
+    <TextView
+      android:id="@+id/videoCompetitionDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_small"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionTitle" />
+
+
+    <TextView
+      android:id="@+id/videoCompetitionHomeName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_small"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionDate" />
+
+    <TextView
+      android:id="@+id/videoCompetitionAwayName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+      android:fontFamily="@font/cairo_semi_bold"
+      android:padding="@dimen/margin_padding_size_xxsmall"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_small"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionDate" />
+
+    <View
+      android:id="@+id/dividerView"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginStart="@dimen/margin_padding_size_xxlarge"
+      android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+      android:layout_marginEnd="@dimen/margin_padding_size_xxlarge"
+      android:background="@color/teal"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionAwayName" />
+
+    <ImageView
+      android:id="@+id/thumbnail"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:contentDescription="@null"
+      android:scaleType="fitXY"
+      app:layout_constraintDimensionRatio="H,16:9"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/dividerView" />
+
+    <FrameLayout
+      android:id="@+id/mediaContainer"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="10dp"
+      android:background="#fff"
+      android:scaleType="center"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/dividerView" />
+
+    <ImageView
+      android:id="@+id/volumeController"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+      android:layout_marginBottom="@dimen/margin_padding_size_xsmall"
+      android:contentDescription="@null"
+      android:src="@drawable/ic_mute"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+      android:id="@+id/videoLoadingFrame"
+      layout="@layout/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

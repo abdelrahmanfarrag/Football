@@ -9,6 +9,7 @@ import com.example.football.presentation.main.matches.adapter.MatchesAdapter
 import com.example.football.presentation.main.matches.statistics.MatchStatisticsRepository
 import com.example.football.presentation.main.matches.statistics.adapter.StatisticsAdapter
 import com.example.football.presentation.main.videos.VideosRepository
+import com.example.football.presentation.main.videos.adapter.VideosAdapter
 import dagger.Module
 import dagger.Provides
 
@@ -46,6 +47,10 @@ class FragmentModule {
     scoreBatApi: ScoreBatApi,
     validator: Validator
   ) = VideosRepository(scoreBatApi, validator)
+
+  @Provides
+  @PerFragment
+  fun provideVideosAdapter() = VideosAdapter()
 
 
 }

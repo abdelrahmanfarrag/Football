@@ -26,7 +26,7 @@ data class VideosResponse(
   val url: String? = null,
   @SerializedName("videos")
   val videos: List<Video>? = null,
-  var videoToPlay: String? = null
+  var videoToPlay: String="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
 ) {
   data class Competition(
     @SerializedName("id")
@@ -67,6 +67,6 @@ fun VideosResponse.mapToVideos() = Videos(
   Side2(side2?.name ?: ""),
   date ?: "",
   thumbnail ?: "",
-  videoToPlay ?: "",
+  videoToPlay ,
   title ?: ""
 )
