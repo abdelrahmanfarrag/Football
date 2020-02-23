@@ -45,3 +45,5 @@ fun BaseFragment.setFragmentTitle(title: String) {
     (activity as MainActivity).setupToolbarTitle(title)
   }
 }
+
+

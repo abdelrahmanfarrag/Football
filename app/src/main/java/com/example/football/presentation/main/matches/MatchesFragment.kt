@@ -46,6 +46,7 @@ class MatchesFragment : BaseFragment() {
   override fun afterFragmentInstantiate(savedInstanceState: Bundle?) {
     setFragmentTitle(getString(string.matches))
     layoutManager = LinearLayoutManager(this.activity)
+    retainInstance = true
     callLiveScoresService()
     observeLiveScoresResponse()
   }
@@ -85,7 +86,19 @@ class MatchesFragment : BaseFragment() {
   }
 
   private fun toStatisticsFragment(id: Int, match: Match, view: View) {
+    adapter.clear()
+    adapter.notifyDataSetChanged()
+    lastIndexItem = 0
     val action = MatchesFragmentDirections.actionToMatchStatisticsFragment(id, match)
     Navigation.findNavController(view).navigate(action)
+  }
+
+
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    adapter.clear()
+    adapter.notifyDataSetChanged()
+    lastIndexItem = 0
   }
 }

@@ -23,12 +23,9 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(layout.activity_main)
-  }
-
-  override fun onResume() {
-    super.onResume()
     toolbarSetup()
     setupNavigationComponent()
+
   }
 
   private fun toolbarSetup() {
@@ -38,9 +35,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun setupNavigationComponent() {
     navController = Navigation.findNavController(this, id.navigationComponentContainer)
-    val appBarConfiguration = AppBarConfiguration(setOf(id.tabMatches, id.tabVideos))
     mainBottomNavigation.setupWithNavController(navController)
-    setupActionBarWithNavController(navController, appBarConfiguration)
     NavigationUI.setupActionBarWithNavController(this, navController)
   }
 

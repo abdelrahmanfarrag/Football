@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.football.FootballApplication
 import com.example.football.R
 import com.example.football.di.presentation.FragmentSubComponent
+import com.example.football.presentation.main.MainActivity
 import com.example.football.utils.extensions.getAppColor
 import java.lang.UnsupportedOperationException
 
@@ -37,10 +38,16 @@ abstract class BaseFragment : Fragment() {
     } ?: throw UnsupportedOperationException("You must call @Layout(res) annotation above fragment")
   }
 
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     setupInjection(fragmentSubComponent)
+    super.onViewCreated(view, savedInstanceState)
+  }
+
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     afterFragmentInstantiate(savedInstanceState)
+    (context as MainActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+
   }
 
   private fun getLayoutResource(): Int? = javaClass.getAnnotation(Layout::class.java)?.value

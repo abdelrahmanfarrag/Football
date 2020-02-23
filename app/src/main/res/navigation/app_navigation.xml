@@ -9,7 +9,7 @@
     android:id="@+id/tabMatches"
     android:name="com.example.football.presentation.main.matches.MatchesFragment"
     tools:layout="@layout/fragment_matches"
-    app:popUpToInclusive="true"
+
     >
     <action
       android:id="@+id/actionToMatchStatisticsFragment"
@@ -22,13 +22,13 @@
   <fragment
     android:id="@+id/tabVideos"
     android:name="com.example.football.presentation.main.videos.VideosFragment"
+    app:popUpToInclusive="false"
     tools:layout="@layout/fragment_videos" />
   <fragment
     android:id="@+id/matchStatisticsFragment"
     android:name="com.example.football.presentation.main.matches.statistics.MatchStatisticsFragment"
     android:label="MatchStatisticsFragment"
-    tools:layout="@layout/fragment_match_statistics"
-    app:popUpToInclusive="true">
+    tools:layout="@layout/fragment_match_statistics">
     <argument
       android:name="matchId"
       app:argType="integer" />
