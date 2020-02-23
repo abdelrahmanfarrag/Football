@@ -2,8 +2,10 @@ package com.example.football.data.remote
 
 import com.example.football.data.Constants.Urls.LIVE_SCORE
 import com.example.football.data.Constants.Urls.STATISTICS
+import com.example.football.data.Constants.Urls.VIDEOS
 import com.example.football.data.remote.response.LiveScoresResponse
 import com.example.football.data.remote.response.MatchStatisticsResponse
+import com.example.football.data.remote.response.VideosResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
@@ -16,6 +18,8 @@ import retrofit2.http.QueryMap
  */
 interface ScoreBatApi {
 
+  @GET(VIDEOS)
+  fun loadVideos(): Single<Response<List<VideosResponse>>>
 }
 
 interface LiveScoreApi {

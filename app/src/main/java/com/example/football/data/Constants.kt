@@ -15,10 +15,11 @@ object Constants {
 
   object Urls {
     const val LIVE_SCORES_BASE_URL = "https://livescore-api.com/api-client/"
-    const val SCORE_BAT_BASE_URL = "https://www.scorebat.com/video-api/v1/"
+    const val SCORE_BAT_BASE_URL = "https://www.scorebat.com/"
 
     //ENDPOINTS
     const val LIVE_SCORE = "scores/live.json"
     const val STATISTICS = "matches/stats.json"
+    const val VIDEOS = "video-api/v1/"
   }
 }

@@ -5,6 +5,7 @@ import com.example.football.di.presentation.scope.ViewModelKey
 import com.example.football.di.presentation.viewmodel.FactoryProviderModule
 import com.example.football.presentation.main.matches.MatchesViewModel
 import com.example.football.presentation.main.matches.statistics.MatchStatisticsViewModel
+import com.example.football.presentation.main.videos.VideosViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,7 +26,12 @@ abstract class FragmentViewModelModule {
   @Binds
   @IntoMap
   @ViewModelKey(MatchStatisticsViewModel::class)
-  abstract fun bindMatchStatisticsViewModel(matchesViewModel: MatchStatisticsViewModel): ViewModel
+  abstract fun bindMatchStatisticsViewModel(matchStatisticsViewModel: MatchStatisticsViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(VideosViewModel::class)
+  abstract fun bindVideosViewModel(videosViewModel: VideosViewModel): ViewModel
 
 
 }

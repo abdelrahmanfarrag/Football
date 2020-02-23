@@ -1,12 +1,14 @@
 package com.example.football.di.presentation
 
 import com.example.football.data.remote.LiveScoreApi
+import com.example.football.data.remote.ScoreBatApi
 import com.example.football.data.remote.Validator
 import com.example.football.di.presentation.scope.PerFragment
 import com.example.football.presentation.main.matches.MatchesRepository
 import com.example.football.presentation.main.matches.adapter.MatchesAdapter
 import com.example.football.presentation.main.matches.statistics.MatchStatisticsRepository
 import com.example.football.presentation.main.matches.statistics.adapter.StatisticsAdapter
+import com.example.football.presentation.main.videos.VideosRepository
 import dagger.Module
 import dagger.Provides
 
@@ -37,6 +39,13 @@ class FragmentModule {
   @Provides
   @PerFragment
   fun provideStaticAdapter() = StatisticsAdapter()
+
+  @Provides
+  @PerFragment
+  fun provideVideosRepository(
+    scoreBatApi: ScoreBatApi,
+    validator: Validator
+  ) = VideosRepository(scoreBatApi, validator)
 
 
 }
