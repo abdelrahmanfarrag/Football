@@ -20,7 +20,7 @@ abstract class RecyclerAdapter<T, H : BaseViewHolder<T>> : RecyclerView.Adapter<
 
   fun clear() {
     adapterItems.clear()
-    notifyItemRangeChanged(0, itemCount)
+    notifyDataSetChanged()
   }
 
   override fun getItemCount() = adapterItems.size

@@ -37,6 +37,7 @@ class MatchesFragment : BaseFragment() {
   @Inject lateinit var adapter: MatchesAdapter
   private lateinit var layoutManager: LinearLayoutManager
   private var lastIndexItem = 0
+  private var isMovedToNext = false
 
   private val matchesViewModel by lazy { getViewModel(MatchesViewModel::class.java, factory) }
 
@@ -47,8 +48,9 @@ class MatchesFragment : BaseFragment() {
   override fun afterFragmentInstantiate(savedInstanceState: Bundle?) {
     setFragmentTitle(getString(string.matches))
     layoutManager = LinearLayoutManager(this.activity)
-    retainInstance = true
-    callLiveScoresService()
+    if (!isMovedToNext) {
+      callLiveScoresService()
+    }
     observeLiveScoresResponse()
   }
 
@@ -64,19 +66,20 @@ class MatchesFragment : BaseFragment() {
           loadingFrame.gone()
           liveScores.responseData?.let { data ->
             adapter.setMatchClickListener { id, itemView, match ->
+              isMovedToNext = true
               toStatisticsFragment(id, match, itemView)
             }
             if (data.data.matches.isNotEmpty()) {
               noAvailableMatchesTextView.gone()
               liveScoresMatchesList.visible()
 
-              adapter.setData(data.data.matches)
               liveScoresMatchesList.layoutManager = layoutManager
+              adapter.setData(data.data.matches)
               liveScoresMatchesList.adapter = adapter
               lastIndexItem = adapter.itemCount - data.data.matches.size
               layoutManager.scrollToPosition(lastIndexItem)
               liveScoresMatchesList.endlessScrolling(layoutManager) { callLiveScoresService() }
-            }else{
+            } else {
               noAvailableMatchesTextView.visible()
               liveScoresMatchesList.gone()
             }
@@ -102,12 +105,4 @@ class MatchesFragment : BaseFragment() {
     Navigation.findNavController(view).navigate(action)
   }
 
-
-
-  override fun onDestroyView() {
-    super.onDestroyView()
-    adapter.clear()
-    adapter.notifyDataSetChanged()
-    lastIndexItem = 0
-  }
 }

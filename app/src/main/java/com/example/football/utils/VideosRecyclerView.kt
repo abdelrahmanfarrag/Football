@@ -45,8 +45,8 @@ private enum class VolumeState {
   ON, OFF
 }
 
-class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSet? = null) :
-  RecyclerView(context, attributeSet) {
+class VideosRecyclerView :
+  RecyclerView {
 
   //ItemViews
   private lateinit var thumbnail: ImageView
@@ -69,11 +69,11 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
     toggleVolume()
   }
 
-  init {
+  constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
     instantiateRecycler()
   }
 
-  constructor(context: Context) : this(context, null) {
+  constructor(context: Context) : super(context) {
     instantiateRecycler()
   }
 
@@ -87,7 +87,7 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
     screenDefaultHeight = point.y
     videoSurfaceView = PlayerView(this.context)
     customManager = CustomLayoutManager(this.context)
-    this.layoutManager=customManager
+    this.layoutManager = customManager
     videoSurfaceView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
     val bandwidthMeter = DefaultBandwidthMeter()
     val videoTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
@@ -127,7 +127,7 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
         when (playbackState) {
           Player.STATE_BUFFERING -> {
             if (::progressBar.isInitialized) progressBar.visibility = View.VISIBLE
-            customManager.isScrolling= false
+            customManager.isScrolling = false
             volumeControl.gone()
           }
           Player.STATE_ENDED -> {
@@ -137,7 +137,7 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
             }
           }
           Player.STATE_READY -> {
-            customManager.isScrolling =true
+            customManager.isScrolling = true
             if (::progressBar.isInitialized) progressBar.visibility = View.GONE
             if (!isVideoViewAdded) addVideoView()
             volumeControl.visible()
@@ -323,5 +323,6 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
   fun putMediaObject(objects: MutableList<Videos>) {
     this.videosList = objects
   }
-   fun getCustomManager() = customManager
+
+  fun getCustomManager() = customManager
 }

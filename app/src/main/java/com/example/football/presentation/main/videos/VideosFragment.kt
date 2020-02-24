@@ -49,6 +49,11 @@ class VideosFragment : BaseFragment() {
     observeVideoResponse()
   }
 
+  override fun onDestroy() {
+    videosRecycler.releasePlayer()
+    super.onDestroy()
+  }
+
   private fun callVideosWebService() {
     videosViewModel.loadVideos()
   }
@@ -83,6 +88,7 @@ class VideosFragment : BaseFragment() {
 
     })
   }
+
   override fun onDestroyView() {
     super.onDestroyView()
     adapter.clear()
