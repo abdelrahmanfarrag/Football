@@ -7,9 +7,9 @@ package com.example.football.data
 object Constants {
 
   const val SECRET = "secret"
-  const val SECRET_KEY = "kTM8yvsnBx3O1MW0i0VUF83pWK0VnSlH"
+  const val SECRET_KEY = "GqKfGnnKhbChmaoqxEW71CfAlTuUEmll"
   const val KEY = "key"
-  const val API_KEY = "Yw4UCFd8JNGBZDSq"
+  const val API_KEY = "3mgwAnG7zJDTyLRr"
   const val MATCH_ID = "match_id"
   const val IN_PLAY = "IN PLAY"
 
