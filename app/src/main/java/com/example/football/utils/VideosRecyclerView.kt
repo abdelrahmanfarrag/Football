@@ -127,7 +127,7 @@ class VideosRecyclerView :
         when (playbackState) {
           Player.STATE_BUFFERING -> {
             if (::progressBar.isInitialized) progressBar.visibility = View.VISIBLE
-            customManager.isScrolling = false
+            //customManager.isScrolling = false
             volumeControl.gone()
           }
           Player.STATE_ENDED -> {
@@ -137,7 +137,7 @@ class VideosRecyclerView :
             }
           }
           Player.STATE_READY -> {
-            customManager.isScrolling = true
+          //  customManager.isScrolling = true
             if (::progressBar.isInitialized) progressBar.visibility = View.GONE
             if (!isVideoViewAdded) addVideoView()
             volumeControl.visible()

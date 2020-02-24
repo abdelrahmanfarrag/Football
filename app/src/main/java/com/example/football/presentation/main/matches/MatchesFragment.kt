@@ -58,6 +58,10 @@ class MatchesFragment : BaseFragment() {
     matchesViewModel.loadLiveScores()
   }
 
+  private fun addMoreItems(items: List<Match>) {
+    adapter.addItems(items)
+  }
+
   private fun observeLiveScoresResponse() {
     matchesViewModel.liveScores.observe(viewLifecycleOwner, Observer { liveScores ->
       when (liveScores.responseState) {
@@ -78,7 +82,11 @@ class MatchesFragment : BaseFragment() {
               liveScoresMatchesList.adapter = adapter
               lastIndexItem = adapter.itemCount - data.data.matches.size
               layoutManager.scrollToPosition(lastIndexItem)
-              liveScoresMatchesList.endlessScrolling(layoutManager) { callLiveScoresService() }
+              liveScoresMatchesList.endlessScrolling(
+                layoutManager,
+                { addMoreItems(data.data.matches) },
+                data.data.matches
+              )
             } else {
               noAvailableMatchesTextView.visible()
               liveScoresMatchesList.gone()

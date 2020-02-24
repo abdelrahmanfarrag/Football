@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Authored by Abdelrahman Ahmed on 23 Feb, 2020.
  * Contact: abdelrahmanfarrag291@gmail.com
  */
-class VideosAdapter @Inject constructor(): RecyclerAdapter<Videos, VideosViewHolder>() {
+class VideosAdapter @Inject constructor() : RecyclerAdapter<Videos, VideosViewHolder>() {
   override fun getLayoutId(viewType: Int): Int = R.layout.item_videos
   override fun instantiateViewHolder(itemView: View, viewType: Int) = VideosViewHolder(itemView)
 

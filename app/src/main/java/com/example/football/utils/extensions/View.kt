@@ -50,7 +50,11 @@ fun View.fadeAnimation() {
   this.animation = animation
 }
 
-fun RecyclerView.endlessScrolling(layoutManager: LinearLayoutManager, loadMore: () -> Unit){
+fun <T> RecyclerView.endlessScrolling(
+  layoutManager: LinearLayoutManager,
+  loadMore: (List<T>) -> Unit,
+  items: List<T>
+) {
   this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
       if (dy > 0) {
@@ -58,7 +62,7 @@ fun RecyclerView.endlessScrolling(layoutManager: LinearLayoutManager, loadMore: 
         val totalItemsCount = layoutManager.itemCount
         val pastVisibleItems = layoutManager.findFirstVisibleItemPosition()
         if (visibleItemCount + pastVisibleItems >= totalItemsCount) {
-          loadMore()
+          loadMore(items)
         }
       }
     }

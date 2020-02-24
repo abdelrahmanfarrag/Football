@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.example.football.R.layout
 import com.example.football.R.string
+import com.example.football.data.model.Videos
 import com.example.football.di.presentation.FragmentSubComponent
 import com.example.football.di.presentation.viewmodel.ViewModelFactoryProvider
 import com.example.football.presentation.base.BaseFragment
@@ -53,6 +54,10 @@ class VideosFragment : BaseFragment() {
     videosViewModel.loadVideos()
   }
 
+  private fun addMoreItems(items: List<Videos>) {
+    adapter.addItems(items)
+  }
+
   private fun observeVideoResponse() {
     videosViewModel.videos.observe(viewLifecycleOwner, Observer { response ->
       when (response.responseState) {
@@ -65,7 +70,11 @@ class VideosFragment : BaseFragment() {
             videosRecycler.adapter = adapter
             lastIndexItem = adapter.itemCount - videos.size
             videosRecycler.getCustomManager().scrollToPosition(lastIndexItem)
-            videosRecycler.endlessScrolling(videosRecycler.getCustomManager()) { callVideosWebService() }
+            videosRecycler.endlessScrolling(
+              videosRecycler.getCustomManager(),
+              { addMoreItems(videos) },
+              videos
+            )
 
           }
           videosLoadingFrame.gone()
@@ -85,6 +94,7 @@ class VideosFragment : BaseFragment() {
   }
 
   override fun onDestroyView() {
+    videosRecycler.releasePlayer()
     super.onDestroyView()
     adapter.clear()
     adapter.notifyDataSetChanged()

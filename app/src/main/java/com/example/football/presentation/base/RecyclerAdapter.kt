@@ -33,6 +33,13 @@ abstract class RecyclerAdapter<T, H : BaseViewHolder<T>> : RecyclerView.Adapter<
 
   abstract fun setData(newItems: List<T>)
 
+  fun addItems(newItems: List<T>){
+    adapterItems.addAll(newItems)
+    notifyItemRangeChanged(adapterItems.size, adapterItems.size + newItems.size)
+
+  }
+
+
 
   abstract class BaseViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
      abstract fun bind(item: T)
