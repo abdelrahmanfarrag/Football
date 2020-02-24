@@ -6,7 +6,6 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.football.presentation.base.RecyclerAdapter.BaseViewHolder
 import com.example.football.utils.extensions.inflate
-import retrofit2.http.POST
 
 /**
  * Authored by Abdelrahman Ahmed on 22 Feb, 2020.

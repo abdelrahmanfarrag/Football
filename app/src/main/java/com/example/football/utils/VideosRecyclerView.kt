@@ -17,7 +17,9 @@ import com.example.football.data.model.Videos
 import com.example.football.presentation.main.videos.adapter.VideosViewHolder
 import com.example.football.utils.VolumeState.OFF
 import com.example.football.utils.VolumeState.ON
+import com.example.football.utils.extensions.gone
 import com.example.football.utils.extensions.setDrawable
+import com.example.football.utils.extensions.visible
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.PlaybackParameters
@@ -126,6 +128,7 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
           Player.STATE_BUFFERING -> {
             if (::progressBar.isInitialized) progressBar.visibility = View.VISIBLE
             customManager.isScrolling= false
+            volumeControl.gone()
           }
           Player.STATE_ENDED -> {
             if (::videoPlayer.isInitialized) {
@@ -137,6 +140,7 @@ class VideosRecyclerView constructor(context: Context, attributeSet: AttributeSe
             customManager.isScrolling =true
             if (::progressBar.isInitialized) progressBar.visibility = View.GONE
             if (!isVideoViewAdded) addVideoView()
+            volumeControl.visible()
           }
           else -> if (::progressBar.isInitialized) progressBar.visibility = View.GONE
 

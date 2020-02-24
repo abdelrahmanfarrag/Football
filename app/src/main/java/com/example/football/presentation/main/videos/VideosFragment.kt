@@ -2,7 +2,6 @@ package com.example.football.presentation.main.videos
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.football.R.layout
 import com.example.football.R.string
 import com.example.football.di.presentation.FragmentSubComponent

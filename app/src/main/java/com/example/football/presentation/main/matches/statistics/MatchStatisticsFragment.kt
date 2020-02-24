@@ -115,9 +115,21 @@ class MatchStatisticsFragment : BaseFragment() {
     matchStatisticsHomeScore.text = match.score.split("-")[0]
     matchStatisticsAwayName.text = match.awayName
     matchStatisticsAwayScore.text = match.score.split("-")[1]
-    statisticsAdapter.setData(buildStatisticsList(statistics, activity!!))
+    statisticsAdapter.setData(buildStatisticsList(statistics, getStatisticsListStrings()))
     statisticsList.adapter = statisticsAdapter
   }
 
-
+  private fun getStatisticsListStrings() = mutableListOf<String>().apply {
+    this.add(getString(string.attacks))
+    this.add(getString(string.attempts))
+    this.add(getString(string.corners))
+    this.add(getString(string.fouls))
+    this.add(getString(string.free_kicks))
+    this.add(getString(string.offsides))
+    this.add(getString(string.possession))
+    this.add(getString(string.yellow_cards))
+    this.add(getString(string.red_cards))
+    this.add(getString(string.shots_on_target))
+    this.add(getString(string.shots_off_target))
+  }
 }

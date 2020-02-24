@@ -15,6 +15,20 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
+  <TextView
+    android:id="@+id/noAvailableMatchesTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/cairo_semi_bold"
+    android:textColor="@color/teal"
+    android:text="@string/no_matches"
+    android:visibility="gone"
+    android:textSize="@dimen/text_size_medium"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
   <include
     android:id="@+id/loadingFrame"
     layout="@layout/layout_loading"

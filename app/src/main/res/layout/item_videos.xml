@@ -49,42 +49,6 @@
       app:layout_constraintTop_toBottomOf="@+id/videoCompetitionTitle" />
 
 
-    <TextView
-      android:id="@+id/videoCompetitionHomeName"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/margin_padding_size_xsmall"
-      android:fontFamily="@font/cairo_semi_bold"
-      android:padding="@dimen/margin_padding_size_xxsmall"
-      android:textColor="@color/black"
-      android:textSize="@dimen/text_size_small"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionDate" />
-
-    <TextView
-      android:id="@+id/videoCompetitionAwayName"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
-      android:fontFamily="@font/cairo_semi_bold"
-      android:padding="@dimen/margin_padding_size_xxsmall"
-      android:textColor="@color/black"
-      android:textSize="@dimen/text_size_small"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionDate" />
-
-    <View
-      android:id="@+id/dividerView"
-      android:layout_width="0dp"
-      android:layout_height="1dp"
-      android:layout_marginStart="@dimen/margin_padding_size_xxlarge"
-      android:layout_marginTop="@dimen/margin_padding_size_xsmall"
-      android:layout_marginEnd="@dimen/margin_padding_size_xxlarge"
-      android:background="@color/teal"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionAwayName" />
-
     <ImageView
       android:id="@+id/thumbnail"
       android:layout_width="0dp"
@@ -94,7 +58,7 @@
       app:layout_constraintDimensionRatio="H,16:9"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/dividerView" />
+      app:layout_constraintTop_toBottomOf="@+id/videoCompetitionDate" />
 
     <FrameLayout
       android:id="@+id/mediaContainer"
@@ -105,7 +69,7 @@
       android:scaleType="center"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/dividerView" />
+      app:layout_constraintTop_toBottomOf="@id/videoCompetitionDate" />
 
     <ImageView
       android:id="@+id/volumeController"
@@ -114,8 +78,8 @@
       android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
       android:layout_marginBottom="@dimen/margin_padding_size_xsmall"
       android:contentDescription="@null"
-      android:src="@drawable/ic_mute"
-      android:visibility="visible"
+      android:src="@drawable/ic_unmute"
+      android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent" />
 

@@ -10,9 +10,6 @@ import java.util.Locale
  * Contact: abdelrahmanfarrag291@gmail.com
  */
 
-fun String.splitWord(char: String) =
-  this.split(char)
-
 fun TextView.formatDate(time: String) {
   val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
   val output = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

@@ -1,7 +1,5 @@
 package com.example.football.utils
 
-import android.content.Context
-import com.example.football.R.string
 import com.example.football.data.model.MatchStatistics.Statistics
 import com.example.football.data.model.StatisticsList
 
@@ -18,12 +16,12 @@ fun makeProgress(first: Double, second: Double): Int {
 
 }
 
-fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<StatisticsList> =
+fun buildStatisticsList(statistics: Statistics, sectionName:MutableList<String>): MutableList<StatisticsList> =
   mutableListOf<StatisticsList>().apply {
     if (statistics.attacks.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.attacks),
+          sectionName[0],
           statistics.attacks.split(":")[1].toInt(),
           statistics.attacks.split(":")[0].toInt()
         )
@@ -32,7 +30,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.attemptsOnGoal.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.attempts),
+          sectionName[1],
           statistics.attemptsOnGoal.split(":")[0].toInt(),
           statistics.attemptsOnGoal.split(":")[1].toInt()
         )
@@ -42,7 +40,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.corners.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.corners),
+          sectionName[2],
           statistics.corners.split(":")[0].toInt(),
           statistics.corners.split(":")[1].toInt()
         )
@@ -51,7 +49,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.fouls.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.fouls),
+          sectionName[3],
           statistics.fouls.split(":")[0].toInt(),
           statistics.fouls.split(":")[1].toInt()
         )
@@ -60,7 +58,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.freeKicks.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.free_kicks),
+          sectionName[4],
           statistics.freeKicks.split(":")[0].toInt(),
           statistics.freeKicks.split(":")[1].toInt()
         )
@@ -70,7 +68,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.offsides.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.offsides),
+          sectionName[5],
           statistics.offsides.split(":")[0].toInt(),
           statistics.offsides.split(":")[1].toInt()
         )
@@ -79,7 +77,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.possession.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.possession),
+          sectionName[6],
           statistics.possession.split(":")[0].toInt(),
           statistics.possession.split(":")[1].toInt()
         )
@@ -89,7 +87,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.yellowCards.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.yellow_cards),
+          sectionName[7],
           statistics.yellowCards.split(":")[0].toInt(),
           statistics.yellowCards.split(":")[1].toInt()
         )
@@ -98,7 +96,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.redCards.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.red_cards),
+          sectionName[8],
           statistics.redCards.split(":")[0].toInt(),
           statistics.redCards.split(":")[1].toInt()
         )
@@ -107,7 +105,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.shotsOnTarget.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.shots_on_target),
+          sectionName[9],
           statistics.shotsOnTarget.split(":")[0].toInt(),
           statistics.shotsOnTarget.split(":")[1].toInt()
         )
@@ -117,7 +115,7 @@ fun buildStatisticsList(statistics: Statistics, context: Context): MutableList<S
     if (statistics.shotsOffTarget.isNotEmpty()) {
       this.add(
         StatisticsList(
-          context.getString(string.shots_off_target),
+          sectionName[10],
           statistics.shotsOffTarget.split(":")[0].toInt(),
           statistics.shotsOffTarget.split(":")[1].toInt()
         )

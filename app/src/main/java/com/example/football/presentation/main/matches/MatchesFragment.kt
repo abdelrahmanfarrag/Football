@@ -23,6 +23,7 @@ import com.example.football.utils.extensions.toast
 import com.example.football.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_matches.liveScoresMatchesList
 import kotlinx.android.synthetic.main.fragment_matches.loadingFrame
+import kotlinx.android.synthetic.main.fragment_matches.noAvailableMatchesTextView
 import javax.inject.Inject
 
 /**
@@ -65,12 +66,20 @@ class MatchesFragment : BaseFragment() {
             adapter.setMatchClickListener { id, itemView, match ->
               toStatisticsFragment(id, match, itemView)
             }
-            adapter.setData(data.data.matches)
-            liveScoresMatchesList.layoutManager = layoutManager
-            liveScoresMatchesList.adapter = adapter
-            lastIndexItem = adapter.itemCount - data.data.matches.size
-            layoutManager.scrollToPosition(lastIndexItem)
-            liveScoresMatchesList.endlessScrolling(layoutManager) { callLiveScoresService() }
+            if (data.data.matches.isNotEmpty()) {
+              noAvailableMatchesTextView.gone()
+              liveScoresMatchesList.visible()
+
+              adapter.setData(data.data.matches)
+              liveScoresMatchesList.layoutManager = layoutManager
+              liveScoresMatchesList.adapter = adapter
+              lastIndexItem = adapter.itemCount - data.data.matches.size
+              layoutManager.scrollToPosition(lastIndexItem)
+              liveScoresMatchesList.endlessScrolling(layoutManager) { callLiveScoresService() }
+            }else{
+              noAvailableMatchesTextView.visible()
+              liveScoresMatchesList.gone()
+            }
           }
         }
         ResourceState.ERROR -> {

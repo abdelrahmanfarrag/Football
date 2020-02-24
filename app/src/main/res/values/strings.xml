@@ -18,4 +18,5 @@
   <string name="shots_on_target">SHOTS ON TARGET</string>
   <string name="shots_off_target">SHOTS OFF TARGET</string>
   <string name="free_kicks">FREE KICKS</string>
+  <string name="no_matches">Sorry, there is no live matches at the moment</string>
 </resources>

@@ -3,7 +3,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="@color/gray">
+  >
 
   <com.example.football.utils.VideosRecyclerView
     android:id="@+id/videosRecycler"
@@ -12,7 +12,8 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:orientation="vertical"/>
+    android:orientation="vertical"
+    android:background="@color/silver"/>
   <include
     android:id="@+id/videosLoadingFrame"
     layout="@layout/layout_loading"
